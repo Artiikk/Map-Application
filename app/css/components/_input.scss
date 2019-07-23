@@ -1,0 +1,21 @@
+label {
+  display: block;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  background: url('../images/up-arrow.png') no-repeat;
+  background-size: .7em;
+  background-position: 2% center;
+}
+
+input[type="checkbox"]:checked + label {
+  background: url('../images/down-arrow.png') no-repeat;
+  background-size: .7em;
+  background-position: 2% center;
+}

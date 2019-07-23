@@ -1,0 +1,12 @@
+.tooltip {
+  opacity: 1;
+	position: fixed;
+	z-index: 100;
+	padding: 1px 20px;
+	border: 1px solid $light-grey;
+	border-radius: 4px;
+	text-align: center;
+	font: italic 14px/1.3 sans-serif;
+	color: $grey;
+	box-shadow: 3px 3px 3px rgba($black, .3);
+}

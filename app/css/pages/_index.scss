@@ -1,0 +1,25 @@
+#input-field {
+  display: block;
+  width: 817px;
+  margin-left: 5px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  outline: none;
+  font-size: 18px;
+}
+
+#parsed-table {
+  border-collapse: collapse;
+  cursor: pointer;
+  width: 815px;
+  margin-left: 5px;
+}
+
+#mapid {
+  height: 250px;
+  width: 400px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}

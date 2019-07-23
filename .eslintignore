@@ -1,0 +1,11 @@
+# unconventional js
+/vendor/
+
+# compiled output
+/dist/
+
+# dependencies
+
+# misc
+/coverage/
+/coverage-css/

@@ -1,0 +1,39 @@
+{
+  "name": "pars",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Artiikk/Homework.git",
+  "author": "Artur Shestopalov <Artiikk2@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "lint:js": "eslint app/",
+    "lint:css": "sass-lint -c .sass-lint.yml 'app/css/**/*.scss' -v -q",
+    "fix:js:eslint": "yarn lint:js --fix"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.0.2",
+    "browser-sync": "^2.26.7",
+    "del": "^5.0.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-restricted-globals": "^0.2.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "sass-lint": "^1.13.1",
+    "webpack-stream": "^5.2.1"
+  }
+}
