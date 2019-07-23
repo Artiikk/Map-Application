@@ -11,6 +11,7 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
+const ghpages = require('gh-pages');
 
 const src_folder = './app/';
 const dist_folder = './dist/';
@@ -19,6 +20,12 @@ const node_modules_folder = './node_modules/';
 const dist_node_modules_folder = `${dist_folder}node_modules/`;
 
 const node_dependencies = Object.keys(require('./package.json').dependencies || {});
+
+ghpages.publish(`${dist_folder}`, {
+  branch: 'gh-pages',
+  message: 'deploy',
+  repo: 'https://github.com/Artiikk/Map-Application.git'
+});
 
 gulp.task('clear', () => del([dist_folder]));
 

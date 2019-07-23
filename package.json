@@ -10,7 +10,8 @@
     "build": "gulp build",
     "lint:js": "eslint app/",
     "lint:css": "sass-lint -c .sass-lint.yml 'app/css/**/*.scss' -v -q",
-    "fix:js:eslint": "yarn lint:js --fix"
+    "fix:js:eslint": "yarn lint:js --fix",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -35,5 +36,8 @@
     "gulp-uglify": "^3.0.2",
     "sass-lint": "^1.13.1",
     "webpack-stream": "^5.2.1"
+  },
+  "dependencies": {
+    "gh-pages": "^2.0.1"
   }
 }
