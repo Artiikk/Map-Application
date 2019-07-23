@@ -1,11 +1,4 @@
-import {
-  sortBy,
-  titleSort,
-  citySort,
-  defaultSort,
-  dateSort,
-  numberSort,
-} from './sort';
+import { SORT_METHODS } from './sort';
 
 const HEADER_DATA = [
   {
@@ -39,8 +32,8 @@ export function tableHeader() {
   HEADER_DATA.forEach(row => {
     html += `
       <th class="${row.size}">
-      <input id="${row.sortType}"type="checkbox">
-      <label for="${row.sortType}">${row.title}</label>
+        <input id="${row.sortType}"type="checkbox">
+        <label for="${row.sortType}">${row.title}</label>
       </th>
     `.trim();
   });
@@ -54,13 +47,6 @@ export function headerListener() {
   trHeader.addEventListener('click', headerStruct);
 }
 
-const SORT_METHODS = {
-  title: () => sortBy(titleSort),
-  city: () => sortBy(citySort),
-  date: () => sortBy(dateSort),
-  number: () => sortBy(numberSort),
-};
-
 function headerStruct({ target }) {
-  target.checked ? SORT_METHODS[target.id]() : sortBy(defaultSort);
+  target.checked ? SORT_METHODS[target.id]() : SORT_METHODS.default();
 }

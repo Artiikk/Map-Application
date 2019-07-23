@@ -1,6 +1,6 @@
 import { tableHeader, headerListener } from './modules/header';
 import { tableBody } from './modules/body';
-import { sortBy, defaultSort } from './modules/sort';
+import { SORT_METHODS } from './modules/sort';
 import { mapListener } from './modules/map';
 import { overTipListener, outTipListener } from './modules/tooltip';
 
@@ -27,7 +27,7 @@ function mainTable (jsonFormat) {
   headerListener();
 
   tableBody(jsonFormat);
-  sortBy(defaultSort);
+  SORT_METHODS.default();
 
   overTipListener();
   outTipListener();

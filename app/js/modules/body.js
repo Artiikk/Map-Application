@@ -5,21 +5,33 @@ export function tableBody (parsedJSON) {
   const table = document.getElementById('parsed-table');
 
   for (let i = 0; i < parsedJSON.length; i++) {
-    const { title } = parsedJSON[i];
-    const { city } = parsedJSON[i].location;
-    const { startdate } = parsedJSON[i].dates;
-    const { zipcode } = parsedJSON[i].location;
-    const { urls } = parsedJSON[i];
-    const { en: { shortdescription } } = parsedJSON[i].details;
-    const { adress } = parsedJSON[i].location;
-    const { en: { calendarsummary } } = parsedJSON[i].details;
+    const {
+      urls,
+      title,
+      location: {
+        longitude,
+        latitude,
+        city,
+        adress,
+        zipcode,
+      },
+      dates: {
+        startdate,
+      },
+      details: {
+        en: {
+          shortdescription,
+          calendarsummary,
+        },
+      },
+    } = parsedJSON[i];
 
-    const longitude = Number(parsedJSON[i].location.longitude.replace(',', '.'));
-    const latitude = Number(parsedJSON[i].location.latitude.replace(',', '.'));
+    const long = Number(longitude.replace(',', '.'));
+    const lat = Number(latitude.replace(',', '.'));
 
     const BODY_DATA = [{
       size: 'table-row-xl',
-      title: `<a href="${urls}">${title}</a>`
+      title: `<a href="${urls}" target="_blank">${title}</a>`
     }, {
       size: 'table-row-md',
       title: `${city}`
@@ -39,7 +51,7 @@ export function tableBody (parsedJSON) {
     const tr = document.createElement('tr');
     tr.setAttribute('id', i);
     const id = tr.getAttribute('id');
-    placeInfo[id] = [shortdescription, adress, calendarsummary, longitude, latitude];
+    placeInfo[id] = [shortdescription, adress, calendarsummary, long, lat];
 
     tr.insertAdjacentHTML('afterbegin', html);
     fragment.append(tr);

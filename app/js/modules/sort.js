@@ -1,5 +1,6 @@
-export function sortBy (sort) {
-  const table = document.getElementById('parsed-table');
+const table = document.getElementById('parsed-table');
+
+function sortBy(sort) {
   const tableRows = [...document.querySelectorAll('tr:not(.header)')];
 
   tableRows.sort(sort);
@@ -9,38 +10,43 @@ export function sortBy (sort) {
   }
 }
 
-export function titleSort (a, b) {
-  const elemA = a.children[0].textContent;
-  const elemB = b.children[0].textContent;
+function getContent(a, b, i) {
+  const elemA = a.children[i].textContent;
+  const elemB = b.children[i].textContent;
+
+  return [elemA, elemB];
+}
+
+function titleSort(a, b) {
+  const [elemA, elemB] = getContent(a, b, 0);
 
   return elemA.localeCompare(elemB);
 }
 
-export function citySort (a, b) {
-  const elemA = a.children[1].textContent;
-  const elemB = b.children[1].textContent;
+function citySort(a, b) {
+  const [elemA, elemB] = getContent(a, b, 1);
 
   return elemA.localeCompare(elemB);
 }
 
-export function defaultSort (a, b) {
-  const defaultA = a.children[0].textContent;
-  const defaultB = b.children[0].textContent;
+function defaultSort(a, b) {
+  const [elemA, elemB] = getContent(a, b, 0);
 
-  return defaultB.localeCompare(defaultA);
+  return elemB.localeCompare(elemA);
 }
 
-export function numberSort (a, b) {
-  const elemA = a.children[3].textContent;
-  const elemB = b.children[3].textContent;
+function numberSort(a, b) {
+  const [elemA, elemB] = getContent(a, b, 3);
 
   return parseInt(elemA) - parseInt(elemB);
 }
 
 
-export function dateSort (a, b) {
-  const parsedA = Date.parse(a.children[2].textContent);
-  const parsedB = Date.parse(b.children[2].textContent);
+function dateSort(a, b) {
+  const [elemA, elemB] = getContent(a, b, 2);
+
+  const parsedA = Date.parse(elemA);
+  const parsedB = Date.parse(elemB);
 
   const dateA = isNaN(parsedA)
     ? Date.now()
@@ -51,3 +57,11 @@ export function dateSort (a, b) {
 
   return dateA - dateB;
 }
+
+export const SORT_METHODS = {
+  title: () => sortBy(titleSort),
+  city: () => sortBy(citySort),
+  date: () => sortBy(dateSort),
+  number: () => sortBy(numberSort),
+  default: () => sortBy(defaultSort),
+};
